@@ -4,4 +4,4 @@ from .models import *
 class Filtersproduct(django_filters.FilterSet):
     class Meta:
         model = sell
-        fields = ['namess']
+        fields = '__all__'

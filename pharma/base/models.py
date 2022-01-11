@@ -35,8 +35,10 @@ class sell(models.Model):
         ('Injection', 'Injection'),
 
     )
-    namess = models.ForeignKey(product, on_delete=models.CASCADE)
-    sell_quantity = models.CharField(max_length=100, blank=True)
+    namess = models.CharField(max_length=100)
+    sell_price = models.FloatField(null=True)
+    sell_quantity = models.IntegerField( blank=True)
+    category = models.CharField(max_length=100, null=True, choices=Cat)
     sell_date = models.DateField(auto_now_add=True)
 
     def __str__(self):

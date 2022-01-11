@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load crispy_forms_tags %}
 <html dir="ltr" lang="en">
 
 <head>
@@ -13,6 +14,16 @@
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Tahmina Pharmacy</title>
+    <link rel="stylesheet" href="{% static 'css/fonts/icomoon/style.css' %}">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/css/bootstrap.min.css' %}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/css/style.css' %}">
+
+
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'plugins/images/favicon.png' %}">
@@ -21,6 +32,8 @@
     <link rel="stylesheet" href="{% static 'plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css' %}">
     <!-- Custom CSS -->
     <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -178,45 +191,55 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <form action="" method="get">
-                                {{filter.form}}
-                                <button class="btn btn-primary" type="submit">submit</button>
-                            </form>
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">All the Product</h3>
-                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
+            <div class="content">
+    
+                <div class="container">
+                  <div class="row align-items-stretch justify-content-center no-gutters">
+                    <div class="col-md-7">
+                      <div class="form h-100 contact-wrap p-5">
+                        <h3 class="text-center">Sell A product</h3>
+                        <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                        {% csrf_token %}
+                        {{form.namess}}
+                        
+                          <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                              <label for="" class="col-form-label">Name *</label>
+                              
+                              <input type="text" class="form-control" name="namess" id="name" placeholder="Product name">
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                              <label for="" class="col-form-label">Price *</label>
+                              <input type="text" class="form-control" name="price" id="name" placeholder="Product Price">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                  <label for="budget" class="col-form-label">Quantity</label>
+                                  <input type="text" class="form-control" name="Quantity" id="subject" placeholder="Category">
                                 </div>
+                          </div>
+                          </div>
+                          <div class="row justify-content-center">
+                            <div class="col-md-5 form-group text-center">
+                              <input type="submit" value="SELL PRODUCT" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                              <span class="submitting"></span>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table no-wrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">#</th>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Pieces</th>
-                                            <th class="border-top-0">Added Date</th>
-                                            <th class="border-top-0">Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for i in products %}
-                                            <tr>
-                                                <td>{{i.id}}</td>
-                                                <td class="txt-oflo">{{i.name}}</td>
-                                                <td>{{i.stock}}</td>
-                                                <td class="txt-oflo">{{i.creation_date}}</td>
-                                                <td><span class="text-success">৳{{i.price}}</span></td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
+                          </div>
+                        </form>
+            
+                        <div id="form-message-warning mt-4"></div> 
+                        <div id="form-message-success">
+                          Your message was sent, thank you!
                         </div>
+            
+                      </div>
                     </div>
+                  </div>
                 </div>
+            
+              </div>
             </div>
             <!-- ============================================================== -->
             <!-- footer -->
