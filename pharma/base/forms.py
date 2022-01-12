@@ -5,9 +5,22 @@ class Selling_product(forms.ModelForm):
     class Meta:
         model = sell
         fields = ['namess', 'sell_price', 'sell_quantity',]
+        labels = {
+            'namess': '',
+            'sell_price': '',
+            'sell_quantity': ''
+        }
 
-        widget = {
-            'namess': forms.TextInput(attrs={'class': 'form-control'}),
-            'sell_price': forms.TextInput(attrs={'class': 'form-control'}),
-            'sell_quantity': forms.TextInput(attrs={'class': 'form-control'}),
+
+class Adding_product(forms.ModelForm):
+    class Meta:
+        model = product
+        fields = ['name', 'amount', 'stock', 'price', 'category']
+        labels = {
+            'name': '',
+            'amount': '',
+            'stock': '',
+            'price': '',
+            'category': '',
+
         }

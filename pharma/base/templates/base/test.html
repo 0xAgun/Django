@@ -47,7 +47,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="#">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -84,7 +84,7 @@
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                                    class="img-circle"><span class="text-white font-medium">Hello, {{request.user}}</span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -121,14 +121,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'allpro' %}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'allprod' %}"
                                 aria-expanded="false">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">All Products</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'addproduct' %}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'addprod' %}"
                                 aria-expanded="false">
                                 <i class="fa fa-cube" aria-hidden="true"></i>
                                 <span class="hide-menu">Plan to Add</span>
@@ -179,14 +179,14 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Visit</h3>
+                            <h3 class="box-title">Today Sell</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div id="sparklinedash"><canvas width="67" height="30"
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-success">659</span></li>
+                                <li class="ms-auto"><span class="counter text-success">৳ {{total}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                                             style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-purple">869</span></li>
+                                <li class="ms-auto"><span class="counter text-purple">৳ {{week}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -248,54 +248,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {% for i in recent %}
                                         <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 18, 2021</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2021</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td>TAX</td>
-                                            <td class="txt-oflo">April 20, 2021</td>
-                                            <td><span class="text-danger">-$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td class="txt-oflo">Hosting press html</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 21, 2021</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td class="txt-oflo">Digital Agency PSD</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 23, 2021</td>
-                                            <td><span class="text-danger">-$14</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td class="txt-oflo">Helping Hands WP Theme</td>
-                                            <td>MEMBER</td>
-                                            <td class="txt-oflo">April 22, 2021</td>
-                                            <td><span class="text-success">$64</span></td>
+                                            <td>{{i.id}}</td>
+                                            <td class="txt-oflo">{{i.namess}}</td>
+                                            <td>{{i.sell_quantity}} pcs</td>
+                                            <td class="txt-oflo">{{date}}</td>
+                                            <td><span class="text-success">৳{{i.sell_price}}</span></td>
+                                            {% endfor %}
                                         </tr>
                                     </tbody>
                                 </table>

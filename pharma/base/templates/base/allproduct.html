@@ -47,7 +47,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="#">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -96,7 +96,7 @@
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="{% static 'plugins/images/users/varun.jpg' %}" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                                    class="img-circle"><span class="text-white font-medium">hello, {{request.user}}</span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -119,28 +119,28 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'home' %}"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'sell' %}"
                                 aria-expanded="false">
                                 <i class="fa fa-briefcase" aria-hidden="true"></i>
                                 <span class="hide-menu">Sell</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="allpro"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'allprod' %}"
                                 aria-expanded="false">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 <span class="hide-menu">All Products</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'addprod' %}"
                                 aria-expanded="false">
                                 <i class="fa fa-cube" aria-hidden="true"></i>
                                 <span class="hide-menu">Plan to Add</span>
