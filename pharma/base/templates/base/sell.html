@@ -204,7 +204,7 @@
                           <div class="row">
                             <div class="col-md-6 form-group mb-3">
                               <label for="" class="col-form-label">Name *</label>
-                              {{form.namess|as_crispy_field}}
+                              {{form.sell_name|as_crispy_field}}
                               <!-- <input type="text" class="form-control" name="namess" id="name" placeholder="Product name"> -->
                             </div>
                             <div class="col-md-6 form-group mb-3">
@@ -220,6 +220,11 @@
                                   {{form.sell_quantity|as_crispy_field}}
                                   <!-- <input type="text" class="form-control" name="Quantity" id="subject" placeholder="Category"> -->
                                 </div>
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="budget" class="col-form-label">Category</label>
+                                    {{form.sell_cat|as_crispy_field}}
+                                    <!-- <input type="text" class="form-control" name="Quantity" id="subject" placeholder="Category"> -->
+                                  </div>
                           </div>
                           </div>
                           <div class="row justify-content-center">

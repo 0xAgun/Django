@@ -9,7 +9,7 @@ from .models import *
 from .forms import Selling_product, Adding_product
 
 
-
+@login_required(login_url='login')
 def home(request):
     today = date.today()
     dates = today.strftime("%B %d, %Y")
@@ -27,9 +27,10 @@ def home(request):
     contex = {'recent': recent, 'date': dates, 'total': v, 'week': k}
     return render(request, 'base/test.html', contex)
 
+@login_required(login_url='login')
 def allpro(request):
     productss = product.objects.all()
-    contex = {'products': productss}
+    contex = {'products': productss,}
     return render(request, 'base/allproduct.html', contex)
 
 @login_required(login_url='login')
@@ -42,11 +43,18 @@ def addproduct(request):
         contex = {'form': form}
         return render(request, 'base/add.html', contex)
 
+@login_required(login_url='login')
 def selling(request):
-    form = Selling_product(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('sell')
+    form = Selling_product()
+    if request.method == 'POST':
+        form = Selling_product(request.POST)
+        if form.is_valid():
+            instance = form.save()
+            p = product.objects.get(id=instance.sell_name.id)
+            p.stock -= instance.sell_quantity
+            p.save()
+            
+            return redirect('sell')
 
     contex = {'form': form}
     return render(request, 'base/sell.html', contex)
@@ -69,5 +77,16 @@ def logins(request):
     return render(request, 'base/login.html')
 
 
-def test(request):
-    return render(request, 'base/main.html')
+def logoutmain(request):
+    logout(request)
+    messages.success(request, "successfully logged OUT")
+    return redirect('login')
+
+def searchs(request):
+    query = request.GET['search']
+    rub = product.objects.filter(name__icontains=query)
+    
+
+    contex = {'rab':rub}
+    return render(request, 'base/search.html', contex)
+    # return HttpResponse("search")

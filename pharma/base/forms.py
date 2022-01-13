@@ -4,11 +4,12 @@ from .models import sell, product
 class Selling_product(forms.ModelForm):
     class Meta:
         model = sell
-        fields = ['namess', 'sell_price', 'sell_quantity',]
+        fields = ['sell_name', 'sell_price', 'sell_quantity', 'sell_cat']
         labels = {
-            'namess': '',
+            'sell_name': '',
             'sell_price': '',
-            'sell_quantity': ''
+            'sell_quantity': '',
+            'sell_cat': ''
         }
 
 

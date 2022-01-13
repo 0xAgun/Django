@@ -83,8 +83,8 @@
                         <!-- Search -->
                         <!-- ============================================================== -->
                         <li class=" in">
-                            <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
+                            <form role="search" method="GET", action="/search" class="app-search d-none d-md-block me-3">
+                                <input type="text" name="search" id="search" placeholder="Search..." class="form-control mt-0">
                                 <a href="" class="active">
                                     <i class="fa fa-search"></i>
                                 </a>
@@ -192,7 +192,7 @@
                                         <tr>
                                             <th class="border-top-0">#</th>
                                             <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Pieces</th>
+                                            <th class="border-top-0">Stocks</th>
                                             <th class="border-top-0">Added Date</th>
                                             <th class="border-top-0">Price</th>
                                         </tr>
