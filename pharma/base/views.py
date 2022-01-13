@@ -85,8 +85,6 @@ def logoutmain(request):
 def searchs(request):
     query = request.GET['search']
     rub = product.objects.filter(name__icontains=query)
-    
-
     contex = {'rab':rub}
     return render(request, 'base/search.html', contex)
     # return HttpResponse("search")
